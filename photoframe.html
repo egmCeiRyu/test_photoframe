@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 <link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/photoframe.css?v=20261105_header4">
+<link rel="stylesheet" href="css/photoframe.css?v=20261105_reset_top_pinch">
 
 <title>Photo Frame — Touch Test</title>
 </head>
@@ -33,6 +33,7 @@
 
 <div class="camera-top-actions"><a id="homeButton" href="home.html">🏠</a><button id="openInstructionsBtn" class="instructions-help-btn" type="button"
     aria-haspopup="dialog" aria-controls="instructionsDialog">使い方</button>
+
 <button id="resetFrameBtn" type="button" aria-label="フレームの位置とサイズをリセット">リセット</button>
     <button
         id="switchCameraBtn"
@@ -47,8 +48,6 @@
 
     </button>
 </div>
-
-    
     <nav class="bottom-menu">
 
     
@@ -97,7 +96,7 @@
             <span class="bottom-label">フレーム</span>
         </button>
 
-        <button
+<div class="frame-adjust-actions">        <button
             id="layerToggleBtn"
             class="bottom-menu-btn layer-toggle-btn is-behind"
             type="button"
@@ -110,7 +109,7 @@
             </span>
 
             <span id="layerToggleLabel" class="bottom-label">後ろ</span>
-        </button>
+        </button></div>
 
     </nav>
 
@@ -190,11 +189,19 @@
     src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js">
 </script>
 
-<script src="js/photoframe.js?v=20261105_save_return"></script>
+<script src="js/photoframe.js?v=20261105_pinch_only"></script>
 
 
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 

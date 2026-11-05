@@ -113,6 +113,7 @@ function resetFrameTransform() {
     requestLivePreviewRefresh();
 }
 
+
 function drawTransformedFrame(ctx) {
     ctx.save();
     ctx.translate(FRAME_WIDTH / 2 + frameTransform.x,
@@ -1336,7 +1337,7 @@ async function savePhoto() {
         if (saveCompleted) {
             retakePhoto();
             revokePreviewObjectUrl();
-            openFramePanel();
+            closeFramePanel();
         }
         if (saveBtn) {
             saveBtn.disabled = false;
@@ -1647,5 +1648,8 @@ async function composeLivePreviewFrame(generation) {
         drawTransformedFrame(livePreviewContext);
     }
 }
+
+
+
 
 
