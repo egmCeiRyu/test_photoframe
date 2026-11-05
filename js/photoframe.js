@@ -114,6 +114,22 @@ function resetFrameTransform() {
 }
 
 
+function constrainFrameTransform() {
+    const scale = Math.max(1, Math.min(4, frameTransform.scale));
+    if (scale <= 1 + 1e-9) {
+        frameTransform = { x: 0, y: 0, scale: 1 };
+        return;
+    }
+    // Keep the scaled original frame covering the fixed camera rectangle.
+    const maxX = FRAME_WIDTH * (scale - 1) / 2;
+    const maxY = FRAME_HEIGHT * (scale - 1) / 2;
+    frameTransform = {
+        scale,
+        x: Math.max(-maxX, Math.min(maxX, frameTransform.x)),
+        y: Math.max(-maxY, Math.min(maxY, frameTransform.y))
+    };
+}
+
 function drawTransformedFrame(ctx) {
     ctx.save();
     ctx.translate(FRAME_WIDTH / 2 + frameTransform.x,
@@ -182,6 +198,8 @@ function bindFrameGestures() {
             y: center.y - FRAME_HEIGHT / 2 -
                 (start.center.y - FRAME_HEIGHT / 2 - start.transform.y) * ratio
         };
+        constrainFrameTransform();
+
         requestLivePreviewRefresh();
     });
     const end = event => {
@@ -1648,6 +1666,8 @@ async function composeLivePreviewFrame(generation) {
         drawTransformedFrame(livePreviewContext);
     }
 }
+
+
 
 
 
