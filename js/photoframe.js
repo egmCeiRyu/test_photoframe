@@ -171,7 +171,7 @@ function bindFrameGestures() {
         const distance = points.length === 2
             ? Math.hypot(points[1].x - points[0].x, points[1].y - points[0].y) : 0;
         const scale = start.distance > 0
-            ? Math.max(0.2, Math.min(4, start.transform.scale * distance / start.distance))
+            ? Math.max(1, Math.min(4, start.transform.scale * distance / start.distance))
             : start.transform.scale;
         const ratio = scale / start.transform.scale;
         // Keep the point beneath the pinch midpoint anchored while resizing.
@@ -1648,6 +1648,7 @@ async function composeLivePreviewFrame(generation) {
         drawTransformedFrame(livePreviewContext);
     }
 }
+
 
 
 
