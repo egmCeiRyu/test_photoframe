@@ -1299,6 +1299,8 @@ async function savePhoto() {
         }
     );
 
+    let saveCompleted = false;
+
     try {
         if (
             navigator.share &&
@@ -1312,10 +1314,12 @@ async function savePhoto() {
                 title: "フォトフレーム"
             });
 
+            saveCompleted = true;
             return;
         }
 
         downloadImage(capturedPhotoBlob);
+        saveCompleted = true;
     } catch (error) {
         if (error.name === "AbortError") {
             return;
@@ -1327,7 +1331,13 @@ async function savePhoto() {
         );
 
         downloadImage(capturedPhotoBlob);
+        saveCompleted = true;
     } finally {
+        if (saveCompleted) {
+            retakePhoto();
+            revokePreviewObjectUrl();
+            openFramePanel();
+        }
         if (saveBtn) {
             saveBtn.disabled = false;
         }
@@ -1637,4 +1647,5 @@ async function composeLivePreviewFrame(generation) {
         drawTransformedFrame(livePreviewContext);
     }
 }
+
 
