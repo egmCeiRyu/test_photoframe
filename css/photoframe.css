@@ -1126,9 +1126,72 @@ body {
 /* Touch experiment: only the composited camera area handles gestures. */
 #livePreviewCanvas { pointer-events: auto; touch-action: none; user-select: none; }
 #resetFrameBtn {
-    position: fixed; top: calc(18px + env(safe-area-inset-top));
-    right: calc(80px + env(safe-area-inset-right)); z-index: 24;
-    min-height: 44px; border: 1px solid #fff; border-radius: 22px;
-    padding: 8px 14px; background: rgba(0,0,0,.7); color: #fff;
-    font: inherit; cursor: pointer;
+    position: fixed;
+    top: calc(20px + env(safe-area-inset-top));
+    right: calc(78px + env(safe-area-inset-right));
+    z-index: 24;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    min-height: 44px;
+    margin: 0;
+    padding: 0 14px;
+    border: 1px solid rgba(255, 255, 255, .7);
+    border-radius: 24px;
+    background: rgba(0, 0, 0, .7);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    touch-action: manipulation;
 }
+#resetFrameBtn:focus-visible {
+    outline: 3px solid #ffb800;
+    outline-offset: 3px;
+}
+@media (orientation: landscape) and (max-height: 500px) {
+    #resetFrameBtn {
+        top: calc(12px + env(safe-area-inset-top));
+        right: calc(72px + env(safe-area-inset-right));
+    }
+}
+/* Keep the reset control clear of the help button on narrow screens. */
+@media (max-width: 479px) {
+    #resetFrameBtn {
+        top: calc(76px + env(safe-area-inset-top));
+        right: calc(18px + env(safe-area-inset-right));
+    }
+}
+
+/* One shared alignment context, including iPhone safe-area insets. */
+.camera-top-actions {
+    position: fixed;
+    top: calc(18px + env(safe-area-inset-top));
+    right: calc(18px + env(safe-area-inset-right));
+    z-index: 24;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.camera-top-actions #resetFrameBtn,
+.camera-top-actions #switchCameraBtn {
+    position: static;
+    inset: auto;
+    flex: 0 0 auto;
+    margin: 0;
+}
+@media (orientation: landscape) and (max-height: 500px) {
+    .camera-top-actions {
+        top: calc(10px + env(safe-area-inset-top));
+        right: calc(12px + env(safe-area-inset-right));
+    }
+}
+@media (max-width: 479px) {
+    .camera-top-actions {
+        top: calc(76px + env(safe-area-inset-top));
+    }
+}
+
