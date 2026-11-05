@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.30) 0%,
+            rgba(255,255,255,.55) 45%,
+            rgba(255,255,255,.92) 100%
+        ),
+        url("../assets/images/hero-main.webp");
+
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+
+    color: #102044;
+    overflow: hidden;
+}
+.home-page {
+    width: 100%;
+    max-width: 430px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    padding: 0 20px calc(18px + env(safe-area-inset-bottom));
+    padding:
+        0
+        clamp(14px, 4vw, 20px)
+        calc(clamp(14px, 2.5dvh, 24px) + env(safe-area-inset-bottom));
+}
+
+.home-title {
+    margin: 0 0 14px;
+    margin: 0 0 clamp(10px, 1.8dvh, 18px);
+
+    text-align: center;
+
+    font-size: 30px;
+    font-size: clamp(24px, 4.2dvh, 34px);
+    line-height: 1.15;
+    font-weight: 900;
+    letter-spacing: .04em;
+
+    color: #006bff;
+
+    text-shadow:
+        0 2px 0 #ffffff,
+        0 4px 14px rgba(0,107,255,.22);
+}
+
+.home-menu {
+    display: grid;
+    gap: clamp(26px, 4dvh, 38px);
+    padding-top: 30px;
+}
+.home-menu-button {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    border-radius: 18px;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .18s ease;
+}
+.home-menu-button:active { transform: scale(.97); }
+.home-menu-button:focus-visible {
+    outline: 3px solid #006bff;
+    outline-offset: 5px;
+}
+.menu-banner {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.menu-character {
+    position: absolute;
+    z-index: 1;
+    left: 1%;
+    bottom: 7%;
+    width: 24%;
+    height: 145%;
+    object-fit: contain;
+    object-position: center bottom;
+    pointer-events: none;
+    filter: drop-shadow(0 3px 3px rgba(0, 40, 90, .22));
+}
+
+
+/* Reference color treatment on the AR banner only. Character/icon layer stays original. */
+.home-menu-button[href="character-list.html"] .menu-banner {
+    filter: hue-rotate(-6deg) saturate(1.55) brightness(1.11);
+}

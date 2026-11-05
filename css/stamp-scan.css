@@ -1,0 +1,402 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #000;
+    color: #ffffff;
+}
+
+#phone {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(180deg, #eaf5ff 0%, #ffffff 100%);
+}
+
+.scan-intro {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+
+    z-index: 20;
+
+    width: 100%;
+    max-width: 430px;
+    margin: 0;
+
+    transform: translateX(-50%);
+
+    padding:
+        calc(86px + env(safe-area-inset-top))
+        20px
+        calc(28px + env(safe-area-inset-bottom));
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background: linear-gradient(
+        180deg,
+        #eaf5ff 0%,
+        #ffffff 100%
+    );
+
+    color: #102044;
+}
+
+.scan-icon {
+    width: 92px;
+    height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    border-radius: 28px;
+    background: rgba(255,255,255,.96);
+    border: 3px solid #d7e9ff;
+    font-size: 48px;
+    box-shadow: 0 10px 22px rgba(0,80,180,.12);
+}
+
+.scan-intro h1 {
+    margin: 0 0 14px;
+    font-size: 30px;
+    font-weight: 900;
+    color: #006bff;
+}
+
+.scan-intro > p {
+    margin: 0 0 20px;
+    font-size: 15px;
+    line-height: 1.8;
+    font-weight: 800;
+    color: #33415f;
+}
+
+.notice-box {
+    width: 100%;
+    margin-bottom: 24px;
+    padding: 16px;
+    border-radius: 22px;
+    border: 3px solid #d7e9ff;
+    background: rgba(255,255,255,.96);
+    box-shadow: 0 10px 22px rgba(0,80,180,.10);
+    text-align: left;
+}
+
+.notice-box p {
+    margin: 0 0 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 700;
+    color: #33415f;
+}
+
+.notice-box p:last-child {
+    margin-bottom: 0;
+}
+
+#startARButton {
+    width: 100%;
+    min-height: 62px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #006bff, #22b7ff);
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: .06em;
+    box-shadow: 0 10px 24px rgba(0,107,255,.30);
+}
+
+#startARButton:active {
+    transform: scale(.97);
+}
+
+#arContainer {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    z-index: 1;
+}
+
+#stampMessage,
+#scanText,
+#safetyMessage,
+#debugText {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+
+#stampMessage {
+    top: calc(88px + env(safe-area-inset-top));
+    z-index: 30;
+    width: calc(100% - 40px);
+    max-width: 390px;
+    padding: 16px 18px;
+    border-radius: 999px;
+    background: rgba(0,107,255,.94);
+    color: #ffffff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 900;
+    box-shadow: 0 10px 24px rgba(0,0,0,.28);
+}
+
+#scanText {
+    bottom: calc(118px + env(safe-area-inset-bottom));
+    z-index: 15;
+    width: calc(100% - 40px);
+    max-width: 390px;
+    padding: 14px 18px;
+    border-radius: 999px;
+    background: rgba(0,0,0,.62);
+    color: #ffffff;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 900;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+#safetyMessage {
+    bottom: calc(54px + env(safe-area-inset-bottom));
+    z-index: 15;
+    width: calc(100% - 40px);
+    max-width: 390px;
+    padding: 12px 16px;
+    border-radius: 999px;
+
+    background: rgba(0, 0, 0, .62);
+    color: #ffffff;
+
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 800;
+
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .22);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+#debugText {
+    top: calc(18px + env(safe-area-inset-top));
+    z-index: 15;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(0,0,0,.55);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.character-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: rgba(0,0,0,.68);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.character-modal.hidden {
+    display: none;
+}
+
+.character-modal-card {
+    width: 86%;
+    max-width: 320px;
+    padding: 16px;
+    border-radius: 22px;
+    border: 3px solid #ffd24d;
+    background: #ffffff;
+    color: #102044;
+    text-align: center;
+    box-shadow: 0 16px 36px rgba(0,0,0,.28);
+    animation: modalPop .24s ease;
+}
+
+.modal-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 52px;
+    height: 28px;
+    margin-bottom: 8px;
+    border-radius: 999px;
+    background: #ff5a5f;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+#modalCharacterName {
+    margin: 0 0 10px;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: #102044;
+}
+
+.modal-image-frame {
+    width: 100%;
+    max-width: 196px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 16px;
+    border: 3px solid #35d0c8;
+    background: linear-gradient(180deg, #dffff7, #ffffff);
+}
+
+.modal-image-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#modalText {
+    margin: 12px 0 14px;
+    font-size: 13px;
+    line-height: 1.6;
+    font-weight: 800;
+    color: #33415f;
+}
+
+#modalCloseButton {
+    width: 100%;
+    min-height: 48px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #006bff, #22b7ff);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 900;
+    box-shadow: 0 10px 22px rgba(0,107,255,.28);
+}
+
+#modalCloseButton:active {
+    transform: scale(.97);
+}
+
+body.is-ar-started #scanIntro {
+    display: none;
+}
+
+body.is-ar-started #debugText {
+    display: block;
+}
+
+body.modal-open #scanText,
+body.modal-open #safetyMessage,
+body.modal-open #debugText,
+body.modal-open #stampMessage {
+    display: none !important;
+}
+
+body.modal-open #arContainer canvas,
+body.modal-open #arContainer video {
+    z-index: 1 !important;
+}
+
+@keyframes modalPop {
+    from {
+        opacity: 0;
+        transform: scale(.88);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.character-modal {
+    z-index: 2147483647 !important;
+}
+
+body.modal-open .mindar-ui-overlay,
+body.modal-open .mindar-ui-scanning,
+body.modal-open .mindar-ui-loading,
+body.modal-open #scanText,
+body.modal-open #safetyMessage,
+body.modal-open #debugText,
+body.modal-open #stampMessage {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* ==========================
+   Character Modal Buttons
+========================== */
+
+.voice-button,
+#modalCloseButton {
+    width: 100%;
+    min-height: 56px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #006bff, #22b7ff);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 900;
+    box-shadow: 0 10px 22px rgba(0,107,255,.28);
+    transition: transform .15s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.voice-button:active,
+#modalCloseButton:active {
+    transform: scale(.97);
+}
+
+.voice-button:hover {
+    transform: translateY(-2px);
+}
+
+.voice-button:active {
+    transform: scale(.98);
+}
+
+#modalCloseButton {
+    background: #f2f2f2;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+#modalCloseButton:hover {
+    background: #e8e8e8;
+}
+
+#modalCloseButton:active {
+    transform: scale(.98);
+}
