@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+
+    <title>コンプリート</title>
+
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/complete.css">
+
+</head>
+
+<body>
+
+    <main class="complete-page" hidden>
+
+        <div class="stars"></div>
+        <div class="reward-glow"></div>
+
+        <section class="complete-card">
+
+            <div class="complete-icon">
+                🎉
+            </div>
+
+            <h1>
+
+                スタンプコンプリート！
+
+            </h1>
+
+            <p class="complete-message">
+
+                おめでとうございます！<br>
+                すべてのスタンプを集めました！
+
+            </p>
+
+            <div class="reward-image reveal-delay">
+
+                <img
+                    id="completeRewardImage"
+                    alt="Reward">
+
+            </div>
+
+            <button
+                id="playVoiceButton"
+                class="main-button reveal-delay">
+
+                ▶ お祝いボイス
+
+            </button>
+
+        </section>
+
+    </main>
+
+    <audio
+        id="completeVoice"
+        preload="auto"
+        data-protected-src="assets/sounds/complete.mp3">
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script type="module" src="js/complete.js?v=20261030_protected"></script>
+
+    <a id="homeButton" href="home.html">🏠</a>
+
+<!-- Cloudflare Web Analytics -->
+<script
+  type="module"
+  src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon='{"token":"08f3a968230f458cb1e5b5aaad3df323"}'>
+</script>
+<!-- End Cloudflare Web Analytics -->
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "characterar-secure",
+  "compatibility_date": "2026-07-31",
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "main": "server/worker.mjs",
+  "vars": {
+    "SUPABASE_URL": "https://btzheezlvxkyemkactvj.supabase.co",
+    "SUPABASE_PUBLISHABLE_KEY": "sb_publishable_vOhFbevQUsseGs-oQgm0JQ_8t6Oi1Sh"
+  }
+}

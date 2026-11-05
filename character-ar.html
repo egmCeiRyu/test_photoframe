@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    <title>Character AR</title>
+
+    <link rel="stylesheet" href="css/character-ar.css?v=20261029_hint">
+
+    <script
+        crossorigin="anonymous"
+        src="./external/scripts/8frame-1.5.0.min.js">
+    </script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@8thwall/xrextras@1/dist/xrextras.js"
+        crossorigin="anonymous">
+    </script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@8thwall/landing-page@1/dist/landing-page.js"
+        crossorigin="anonymous">
+    </script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@8thwall/engine-binary@1/dist/xr.js"
+        crossorigin="anonymous"
+        async
+        data-preload-chunks="slam">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script type="module"
+        src="js/character-ar.js?v=20261027_ar8">
+    </script>
+</head>
+
+<body>
+
+    <a
+        id="homeButton"
+        class="home-button"
+        href="home.html"
+        aria-label="ホームへ戻る"></a>
+
+    <div id="targetOverlay">
+
+        <button id="targetBtn" type="button" aria-label="キャラクターを配置">
+            <svg viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="45" cy="45" r="38" stroke="white" stroke-width="2.5" stroke-opacity="0.95" />
+                <circle cx="45" cy="45" r="10" stroke="white" stroke-width="2.5" stroke-opacity="0.95" />
+                <circle cx="45" cy="45" r="3" fill="white" fill-opacity="0.95" />
+
+                <line x1="45" y1="7" x2="45" y2="26" stroke="white" stroke-width="2.5" stroke-linecap="round" />
+                <line x1="45" y1="64" x2="45" y2="83" stroke="white" stroke-width="2.5" stroke-linecap="round" />
+                <line x1="7" y1="45" x2="26" y2="45" stroke="white" stroke-width="2.5" stroke-linecap="round" />
+                <line x1="64" y1="45" x2="83" y2="45" stroke="white" stroke-width="2.5" stroke-linecap="round" />
+            </svg>
+        </button>
+
+        <div id="targetHint">
+            タップしてキャラクターを配置してください
+        </div>
+
+        <p id="scaleHint">キャラクターの大きさは二本の指で調節できます。</p>
+
+    </div>
+
+    <div id="bottomControls">
+
+        <a
+            id="characterListBtn"
+            class="side-control-button"
+            href="character-list.html"
+            aria-label="キャラクター一覧へ戻る">
+            一覧
+        </a>
+
+        <button id="captureBtn" type="button" aria-label="撮影">
+            <svg id="captureIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M8 6l2-3h4l2 3h4a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/>
+                <circle cx="12" cy="13" r="4"/>
+            </svg>
+        </button>
+
+    </div>
+
+    <a-scene
+        character-ar-controller
+
+        xrextras-gesture-detector
+        landing-page
+        xrextras-loading
+        xrextras-runtime-error
+
+        renderer="colorManagement:true; antialias:false; alpha:true"
+        xrweb="
+            allowedDevices:any;
+            defaultEnvironmentFogIntensity:0.3;
+            defaultEnvironmentFloorColor:#ffffff;
+            defaultEnvironmentSkyBottomColor:#B4C4CC;
+            defaultEnvironmentSkyTopColor:#5ac8fa;
+            defaultEnvironmentSkyGradientStrength:0.5;
+        "
+    >
+
+        <a-assets>
+        </a-assets>
+
+        <a-camera
+            id="camera"
+            position="0 1.6 0"
+            raycaster="objects: .cantap"
+            cursor="fuse:false; rayOrigin:mouse;">
+        </a-camera>
+
+        <a-light
+            type="ambient"
+            intensity="0.85">
+        </a-light>
+
+        <a-entity
+            id="mainCharacter"
+            class="cantap"
+            visible="false"
+            scale="1 1 1"
+            rotation="0 0 0"
+            position="0 0 -2"
+
+            xrextras-hold-drag
+            xrextras-two-finger-rotate
+            xrextras-pinch-scale="min:0.05;max:8;">
+        </a-entity>
+
+        <a-box
+            id="ground"
+            class="cantap"
+            scale="20 1 20"
+            position="0 -0.1 0"
+            visible="true"
+            material="color:#ffffff; transparent:true; opacity:0.0001; depthWrite:false">
+        </a-box>
+
+    </a-scene>
+
+<!-- Cloudflare Web Analytics -->
+<script
+  type="module"
+  src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon='{"token":"08f3a968230f458cb1e5b5aaad3df323"}'>
+</script>
+<!-- End Cloudflare Web Analytics -->
+</body>
+
+</html>

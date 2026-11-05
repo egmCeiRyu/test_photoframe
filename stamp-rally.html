@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>スタンプラリー</title>
+
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/stamp-rally.css?v=20261030_publicpreview">
+</head>
+
+<body>
+
+    <main class="container">
+
+    <h1>スタンプラリー</h1>
+
+    <section class="stamp-level-card">
+        <div class="level-header">
+            <span>スタンプ獲得状況</span>
+            <strong id="progressText">0 / 8</strong>
+        </div>
+
+        <div class="progress-bar">
+            <div id="progressFill"></div>
+        </div>
+    </section>
+
+    <section id="rewardBox" class="reward-box">
+        <h2>特典画像</h2>
+
+        <div class="reward-image-frame">
+            <img src="assets/previews/reward.webp" data-preview-src="assets/previews/reward.webp" data-protected-src="assets/reward/reward.webp" alt="特典画像">
+            <div class="reward-lock">🔒</div>
+        </div>
+    </section>
+
+    <section id="completeBox" class="complete-box">
+        <p>コンプリートしました！</p>
+
+        <a
+            id="giftButton"
+            class="gift-button"
+            href="complete.html">
+            特典を見る
+        </a>
+    </section>
+
+    <div class="buttons">
+        <button class="scan-button" onclick="location.href='stamp-scan.html'" type="button">
+            パネルSCAN
+        </button>
+    </div>
+
+    <section class="stamp-grid">
+
+        <button class="stamp-card locked" data-character-id="5" type="button">
+            <img class="stamp" src="assets/previews/stamp02.webp" data-preview-src="assets/previews/stamp02.webp" data-protected-src="assets/stamps/stamp02.png" alt="スタンプ02">
+        </button>
+
+        <button class="stamp-card locked" data-character-id="9" type="button">
+            <img class="stamp" src="assets/previews/stamp06.webp" data-preview-src="assets/previews/stamp06.webp" data-protected-src="assets/stamps/stamp06.png" alt="スタンプ06">
+        </button>
+
+        <button class="stamp-card locked" data-character-id="6" type="button">
+            <img class="stamp" src="assets/previews/stamp03.webp" data-preview-src="assets/previews/stamp03.webp" data-protected-src="assets/stamps/stamp03.png" alt="スタンプ03">
+        </button>
+
+        <button class="stamp-card locked" data-character-id="4" type="button">
+            <img class="stamp" src="assets/previews/stamp01.webp" data-preview-src="assets/previews/stamp01.webp" data-protected-src="assets/stamps/stamp01.png" alt="スタンプ01">
+        </button>
+
+        <button class="stamp-card locked" data-character-id="7" type="button">
+            <img class="stamp" src="assets/previews/stamp04.webp" data-preview-src="assets/previews/stamp04.webp" data-protected-src="assets/stamps/stamp04.png" alt="スタンプ04">
+        </button>
+
+        <button class="stamp-card locked" data-character-id="10" type="button">
+            <img class="stamp" src="assets/previews/stamp07.webp" data-preview-src="assets/previews/stamp07.webp" data-protected-src="assets/stamps/stamp07.png" alt="スタンプ07">
+        </button>
+
+        <button class="stamp-card locked" data-character-id="8" type="button">
+            <img class="stamp" src="assets/previews/stamp05.webp" data-preview-src="assets/previews/stamp05.webp" data-protected-src="assets/stamps/stamp05.png" alt="スタンプ05">
+        </button>
+
+        <button class="stamp-card locked" data-character-id="11" type="button">
+            <img class="stamp" src="assets/previews/stamp08.webp" data-preview-src="assets/previews/stamp08.webp" data-protected-src="assets/stamps/stamp08.png" alt="スタンプ08">
+        </button>
+
+    </section>
+
+</main>
+
+    <a id="homeButton" href="home.html" aria-label="ホームに戻る">🏠</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script type="module" src="js/stamp-rally.js?v=20261030_publicpreview"></script>
+
+<!-- Cloudflare Web Analytics -->
+<script
+  type="module"
+  src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon='{"token":"08f3a968230f458cb1e5b5aaad3df323"}'>
+</script>
+<!-- End Cloudflare Web Analytics -->
+</body>
+
+</html>

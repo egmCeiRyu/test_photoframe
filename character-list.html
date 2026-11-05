@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0">
+
+    <title>キャラクターAR</title>
+
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/character-list.css?v=20261030_equalheights">
+
+</head>
+
+<body>
+
+    <main class="page">
+
+        <header class="page-header">
+
+            <h1>
+
+                キャラクターAR
+
+            </h1>
+
+            <p class="subtitle">
+
+                獲得したキャラクターを選択してください
+
+            </p>
+
+        </header>
+
+        <section
+            id="characterGrid"
+            class="character-grid">
+
+            <!-- character-list.js -->
+
+        </section>
+
+    </main>
+
+    <a id="homeButton" href="home.html" aria-label="ホームに戻る">🏠</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="js/supabase.js"></script>
+
+    <script type="module"
+            src="js/character-list.js?v=20261030_silhouettes"></script>
+
+<!-- Cloudflare Web Analytics -->
+<script
+  type="module"
+  src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon='{"token":"08f3a968230f458cb1e5b5aaad3df323"}'>
+</script>
+<!-- End Cloudflare Web Analytics -->
+</body>
+
+</html>

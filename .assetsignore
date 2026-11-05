@@ -1,0 +1,17 @@
+**/.git
+**/.git/**
+.gitignore
+.assetsignore
+wrangler.jsonc
+
+_backups/**
+checks/**
+
+server/**
+*.md
+package*.json
+node_modules/**
+.wrangler/**
+.gitignore
+
+_pages-build/**

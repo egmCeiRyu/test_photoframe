@@ -6,9 +6,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 <link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/photoframe.css?v=20261105_reset_top_pinch">
+<link rel="stylesheet" href="css/photoframe.css?v=20261105_pinch_bounded">
 
-<title>Photo Frame — Touch Test</title>
+<title>Photo Frame</title>
 </head>
 
 <body>
@@ -32,10 +32,7 @@
     <canvas id="captureCanvas"></canvas>
 
 <div class="camera-top-actions"><a id="homeButton" href="home.html">🏠</a><button id="openInstructionsBtn" class="instructions-help-btn" type="button"
-    aria-haspopup="dialog" aria-controls="instructionsDialog">使い方</button>
-
-<button id="resetFrameBtn" type="button" aria-label="フレームの位置とサイズをリセット">リセット</button>
-    <button
+    aria-haspopup="dialog" aria-controls="instructionsDialog">使い方</button><button id="resetFrameBtn" type="button" aria-label="フレームの位置とサイズをリセット">リセット</button>    <button
         id="switchCameraBtn"
         class="switch-camera-btn"
         type="button"
@@ -46,8 +43,8 @@
             alt=""
             class="switch-camera-img">
 
-    </button>
-</div>
+    </button></div>
+
     <nav class="bottom-menu">
 
     
@@ -96,7 +93,7 @@
             <span class="bottom-label">フレーム</span>
         </button>
 
-<div class="frame-adjust-actions">        <button
+        <button
             id="layerToggleBtn"
             class="bottom-menu-btn layer-toggle-btn is-behind"
             type="button"
@@ -109,7 +106,7 @@
             </span>
 
             <span id="layerToggleLabel" class="bottom-label">後ろ</span>
-        </button></div>
+        </button>
 
     </nav>
 
@@ -177,8 +174,9 @@
     <ol id="instructionsSteps">
         <li>左下のフォトフレームリストからフレームを選ぼう</li>
         <li>右下のボタンで、フレーム上に映る人物の手前・奥の切り替えができます</li>
-        <li>指1本でフレームを移動、指2本で拡大・縮小できます。「位置をリセット」で元に戻せます。</li>
-        <li>中央のカメラボタンで写真を撮ろう</li>
+        <li>指2本でフレームを拡大・縮小できます。拡大中は指1本で移動できます。100%に戻すと中央に固定されます。</li>
+<li>「リセット」で元のサイズと位置に戻せます。</li>
+<li>中央のカメラボタンで写真を撮ろう</li>
     </ol>
     <form method="dialog">
         <button class="instructions-start-btn" autofocus>はじめる</button>
@@ -189,24 +187,15 @@
     src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js">
 </script>
 
-<script src="js/photoframe.js?v=20261105_bounded_drag"></script>
+<script src="js/photoframe.js?v=20261105_pinch_bounded"></script>
 
-
+<!-- Cloudflare Web Analytics -->
+<script
+  type="module"
+  src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon='{"token":"08f3a968230f458cb1e5b5aaad3df323"}'>
+</script>
+<!-- End Cloudflare Web Analytics -->
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

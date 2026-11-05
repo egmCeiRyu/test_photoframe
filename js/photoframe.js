@@ -100,7 +100,6 @@ const frames = Array.from(
     }
 );
 
-
 // Frame-only transform in 1920x1080 composition coordinates.
 var frameTransform = { x: 0, y: 0, scale: 1 };
 var framePointers = new Map();
@@ -214,6 +213,7 @@ function bindFrameGestures() {
     });
     document.getElementById("resetFrameBtn").addEventListener("click", resetFrameTransform);
 }
+
 initialize();
 
 /* =========================
@@ -1666,11 +1666,4 @@ async function composeLivePreviewFrame(generation) {
         drawTransformedFrame(livePreviewContext);
     }
 }
-
-
-
-
-
-
-
 

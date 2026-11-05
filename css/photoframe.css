@@ -1123,9 +1123,8 @@ body {
 }
 
 
-/* Touch experiment: only the composited camera area handles gestures. */
+/* Pinch zoom affects the frame inside the fixed camera canvas only. */
 #livePreviewCanvas { pointer-events: auto; touch-action: none; user-select: none; }
-/* Shared top row: home, help, reset and camera use the same centerline. */
 .camera-top-actions {
     position: fixed;
     top: calc(16px + env(safe-area-inset-top));
@@ -1147,11 +1146,9 @@ body {
     flex: 0 0 auto;
     pointer-events: auto;
 }
-.camera-top-actions #openInstructionsBtn {
-    margin-right: auto;
-}
+.camera-top-actions #openInstructionsBtn { margin-right: auto; }
 .camera-top-actions #openInstructionsBtn,
-#resetFrameBtn {
+.camera-top-actions #resetFrameBtn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1159,7 +1156,7 @@ body {
     min-height: 44px;
     padding: 0 12px;
     border: 1px solid rgba(255,255,255,.7);
-    border-radius: 24px;
+    border-radius: 22px;
     background: rgba(0,0,0,.7);
     color: #fff;
     font: inherit;
@@ -1170,132 +1167,7 @@ body {
     cursor: pointer;
     touch-action: manipulation;
 }
-#resetFrameBtn:focus-visible {
-    outline: 3px solid #ffb800;
-    outline-offset: 3px;
-}
+#resetFrameBtn:focus-visible { outline: 3px solid #ffb800; outline-offset: 3px; }
 @media (orientation: landscape) and (max-height: 500px) {
-    .camera-top-actions {
-        top: calc(10px + env(safe-area-inset-top));
-    }
-}
-
-/* Reset sits immediately left of the front/behind control. */
-.frame-adjust-actions {
-    position: absolute;
-    right: max(25px, env(safe-area-inset-right));
-    bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    pointer-events: auto;
-}
-.frame-adjust-actions #resetFrameBtn {
-    position: static;
-    width: 66px;
-    height: 66px;
-    min-height: 44px;
-    padding: 0 4px;
-    border-radius: 50%;
-    font-size: 11px;
-}
-.frame-adjust-actions #layerToggleBtn {
-    position: static;
-    margin: 0;
-}
-@media (orientation: landscape) and (max-height: 500px) {
-    .frame-adjust-actions {
-        right: max(12px, env(safe-area-inset-right));
-        bottom: 5px;
-    }
-    .frame-adjust-actions #resetFrameBtn { width: 56px; height: 56px; }
-}
-@media (max-width: 479px) {
-    .bottom-menu {
-        display: grid;
-        grid-template-columns: 1fr 1fr 2fr;
-        align-items: center;
-        padding: 0 max(12px, env(safe-area-inset-right)) 0 max(12px, env(safe-area-inset-left));
-        gap: 8px;
-    }
-    #openFramePanelBtn { position: static; grid-column: 1; grid-row: 1; justify-self: center; width: 56px; height: 56px; }
-    #captureBtn { position: static; grid-column: 2; grid-row: 1; justify-self: center; transform: none; width: 66px; height: 66px; }
-    #captureBtn:active { transform: scale(.94); }
-    .frame-adjust-actions { position: static; grid-column: 3; grid-row: 1; justify-self: end; gap: 10px; }
-    .frame-adjust-actions #resetFrameBtn,
-    .frame-adjust-actions #layerToggleBtn { width: 56px; height: 56px; }
-}
-
-/* Readable reset label immediately to the left of the layer button. */
-.frame-adjust-actions #resetFrameBtn {
-    width: 80px;
-    height: 44px;
-    min-height: 44px;
-    padding: 0 10px;
-    border-radius: 22px;
-    font-size: 13px;
-}
-@media (max-width: 479px) {
-    .bottom-menu { grid-template-columns: 56px 66px minmax(0, 1fr); gap: 6px; }
-    .frame-adjust-actions { gap: 8px; }
-    .frame-adjust-actions #resetFrameBtn { width: 72px; height: 44px; padding: 0 6px; }
-}
-
-/* Keep the shutter on the screen center, independent of side controls. */
-@media (max-width: 479px) {
-    .bottom-menu { display: flex; padding: 0; }
-    #captureBtn {
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        transform: translateX(-50%);
-    }
-    #captureBtn:active { transform: translateX(-50%) scale(.94); }
-    #openFramePanelBtn {
-        position: absolute;
-        left: max(12px, env(safe-area-inset-left));
-        bottom: 5px;
-    }
-    .frame-adjust-actions {
-        position: absolute;
-        right: max(12px, env(safe-area-inset-right));
-        bottom: 5px;
-        gap: 8px;
-    }
-}
-/* On narrow portrait screens the right pair sits above the shutter row. */
-@media (max-width: 479px) and (orientation: portrait) {
-    .frame-adjust-actions { bottom: 86px; }
-}
-
-/* All bottom controls share the shutter centerline in portrait too. */
-@media (max-width: 479px) {
-    .frame-adjust-actions { bottom: 5px; }
-}
-@media (max-width: 359px) {
-    .frame-adjust-actions { bottom: 11px; gap: 6px; right: max(8px, env(safe-area-inset-right)); }
-    .frame-adjust-actions #resetFrameBtn { width: 56px; height: 44px; padding: 0 2px; font-size: 11px; }
-    .frame-adjust-actions #layerToggleBtn { width: 44px; height: 44px; }
-    #openFramePanelBtn { width: 44px; height: 44px; bottom: 11px; }
-}
-
-
-/* Reset returns to the top row beside the camera switch. */
-.camera-top-actions #resetFrameBtn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    height: 44px;
-    min-height: 44px;
-    padding: 0 12px;
-    border: 1px solid rgba(255,255,255,.7);
-    border-radius: 22px;
-    background: rgba(0,0,0,.7);
-    color: #fff;
-    font: inherit;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1;
-    white-space: nowrap;
+    .camera-top-actions { top: calc(10px + env(safe-area-inset-top)); }
 }
