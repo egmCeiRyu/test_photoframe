@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 <link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/photoframe.css?v=20261105_iphone_align3">
+<link rel="stylesheet" href="css/photoframe.css?v=20261105_header4">
 
 <title>Photo Frame — Touch Test</title>
 </head>
@@ -31,8 +31,9 @@
 
     <canvas id="captureCanvas"></canvas>
 
-<div class="camera-top-actions">
-<button id="resetFrameBtn" type="button">位置をリセット</button>
+<div class="camera-top-actions"><a id="homeButton" href="home.html">🏠</a><button id="openInstructionsBtn" class="instructions-help-btn" type="button"
+    aria-haspopup="dialog" aria-controls="instructionsDialog">使い方</button>
+<button id="resetFrameBtn" type="button" aria-label="フレームの位置とサイズをリセット">リセット</button>
     <button
         id="switchCameraBtn"
         class="switch-camera-btn"
@@ -167,10 +168,9 @@
     </section>
 
 </div>
-<a id="homeButton" href="home.html">🏠</a>
 
-<button id="openInstructionsBtn" class="instructions-help-btn" type="button"
-    aria-haspopup="dialog" aria-controls="instructionsDialog">使い方</button>
+
+
 
 <dialog id="instructionsDialog" class="instructions-dialog"
     aria-labelledby="instructionsTitle" aria-describedby="instructionsSteps">
@@ -195,6 +195,8 @@
 
 </body>
 </html>
+
+
 
 
 

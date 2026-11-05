@@ -1125,23 +1125,45 @@ body {
 
 /* Touch experiment: only the composited camera area handles gestures. */
 #livePreviewCanvas { pointer-events: auto; touch-action: none; user-select: none; }
-#resetFrameBtn {
+/* Shared top row: home, help, reset and camera use the same centerline. */
+.camera-top-actions {
     position: fixed;
-    top: calc(20px + env(safe-area-inset-top));
-    right: calc(78px + env(safe-area-inset-right));
-    z-index: 24;
+    top: calc(16px + env(safe-area-inset-top));
+    left: calc(16px + env(safe-area-inset-left));
+    right: calc(16px + env(safe-area-inset-right));
+    z-index: 25;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+}
+.camera-top-actions #homeButton,
+.camera-top-actions #openInstructionsBtn,
+.camera-top-actions #resetFrameBtn,
+.camera-top-actions #switchCameraBtn {
+    position: static !important;
+    inset: auto !important;
+    margin: 0;
+    flex: 0 0 auto;
+    pointer-events: auto;
+}
+.camera-top-actions #openInstructionsBtn {
+    margin-right: auto;
+}
+.camera-top-actions #openInstructionsBtn,
+#resetFrameBtn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     height: 44px;
     min-height: 44px;
-    margin: 0;
-    padding: 0 14px;
-    border: 1px solid rgba(255, 255, 255, .7);
+    padding: 0 12px;
+    border: 1px solid rgba(255,255,255,.7);
     border-radius: 24px;
-    background: rgba(0, 0, 0, .7);
+    background: rgba(0,0,0,.7);
     color: #fff;
     font: inherit;
+    font-size: 14px;
     font-weight: 700;
     line-height: 1;
     white-space: nowrap;
@@ -1153,45 +1175,7 @@ body {
     outline-offset: 3px;
 }
 @media (orientation: landscape) and (max-height: 500px) {
-    #resetFrameBtn {
-        top: calc(12px + env(safe-area-inset-top));
-        right: calc(72px + env(safe-area-inset-right));
-    }
-}
-/* Keep the reset control clear of the help button on narrow screens. */
-@media (max-width: 479px) {
-    #resetFrameBtn {
-        top: calc(76px + env(safe-area-inset-top));
-        right: calc(18px + env(safe-area-inset-right));
-    }
-}
-
-/* One shared alignment context, including iPhone safe-area insets. */
-.camera-top-actions {
-    position: fixed;
-    top: calc(18px + env(safe-area-inset-top));
-    right: calc(18px + env(safe-area-inset-right));
-    z-index: 24;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-.camera-top-actions #resetFrameBtn,
-.camera-top-actions #switchCameraBtn {
-    position: static;
-    inset: auto;
-    flex: 0 0 auto;
-    margin: 0;
-}
-@media (orientation: landscape) and (max-height: 500px) {
     .camera-top-actions {
         top: calc(10px + env(safe-area-inset-top));
-        right: calc(12px + env(safe-area-inset-right));
     }
 }
-@media (max-width: 479px) {
-    .camera-top-actions {
-        top: calc(76px + env(safe-area-inset-top));
-    }
-}
-
