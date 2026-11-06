@@ -79,6 +79,8 @@ let orientationTimer = null;
 
 const FRAME_WIDTH = 1920;
 const FRAME_HEIGHT = 1080;
+const MIN_FRAME_SCALE = 0.5;
+const MAX_FRAME_SCALE = 4;
 const LIVE_PREVIEW_FPS = 12;
 const LIVE_PREVIEW_INTERVAL = 1000 / LIVE_PREVIEW_FPS;
 const PERSON_MASK_EXPANSION = 5;
@@ -114,14 +116,10 @@ function resetFrameTransform() {
 
 
 function constrainFrameTransform() {
-    const scale = Math.max(1, Math.min(4, frameTransform.scale));
-    if (scale <= 1 + 1e-9) {
-        frameTransform = { x: 0, y: 0, scale: 1 };
-        return;
-    }
-    // Keep the scaled original frame covering the fixed camera rectangle.
-    const maxX = FRAME_WIDTH * (scale - 1) / 2;
-    const maxY = FRAME_HEIGHT * (scale - 1) / 2;
+    const { scale } = frameTransform;
+    // Keep a smaller frame inside the camera rectangle, or a larger frame covering it.
+    const maxX = FRAME_WIDTH * Math.abs(scale - 1) / 2;
+    const maxY = FRAME_HEIGHT * Math.abs(scale - 1) / 2;
     frameTransform = {
         scale,
         x: Math.max(-maxX, Math.min(maxX, frameTransform.x)),
@@ -135,6 +133,9 @@ function drawTransformedFrame(ctx) {
         FRAME_HEIGHT / 2 + frameTransform.y);
     ctx.scale(frameTransform.scale, frameTransform.scale);
     ctx.translate(-FRAME_WIDTH / 2, -FRAME_HEIGHT / 2);
+    ctx.beginPath();
+    ctx.rect(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
+    ctx.clip();
     drawCover(ctx, selectedBackgroundImage, FRAME_WIDTH, FRAME_HEIGHT);
     ctx.restore();
 }
@@ -186,7 +187,7 @@ function bindFrameGestures() {
         const distance = points.length === 2
             ? Math.hypot(points[1].x - points[0].x, points[1].y - points[0].y) : 0;
         const scale = start.distance > 0
-            ? Math.max(1, Math.min(4, start.transform.scale * distance / start.distance))
+            ? Math.max(MIN_FRAME_SCALE, Math.min(MAX_FRAME_SCALE, start.transform.scale * distance / start.distance))
             : start.transform.scale;
         const ratio = scale / start.transform.scale;
         // Keep the point beneath the pinch midpoint anchored while resizing.
